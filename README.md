@@ -11,5 +11,4 @@
 [] Users can solve puzzles to close alarms
 [] Users can create new puzzles
 [] Add multiple ringtones
-[] Andrei gets bitches
 </pre>
