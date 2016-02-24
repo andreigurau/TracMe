@@ -1,6 +1,6 @@
 # TracMe
 
-![alt tag](https://github.com/andreiyugurau/Alarm-Clock/blob/master/3RDieSK.jpg)
+![alt tag](https://github.com/andreiyugurau/Alarm-Clock/blob/master/FsNHM99.jpg)
 
 
 
