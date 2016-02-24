@@ -7,9 +7,6 @@
 <pre>
 #User Stories
 
-[] Add Alarm Page
-[] Users can solve puzzles to close alarms
-[] Users can create new puzzles
-[] Add multiple ringtones
-[] User can add account to save puzzles
+[] Allow user to create account
+
 </pre>
