@@ -1,8 +1,13 @@
 # TracMe
 
+#Wireframes: 
+
 ![alt tag](https://github.com/andreiyugurau/Alarm-Clock/blob/master/FsNHM99.jpg)
 
 
+#Data Schema: 
+
+![alt tag](https://github.com/andreiyugurau/Alarm-Clock/blob/master/7Xfuan2.jpg)
 
 <pre>
 #User Stories
