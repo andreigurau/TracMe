@@ -25,24 +25,36 @@ class ChooseUserViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        let toSend = "dfasdf"
+        let chooseMapViewController = segue.destinationViewController as! ChooseMapViewController
+        chooseMapViewController.email = toSend
     }
-    */
+    
 
     @IBAction func search(sender: AnyObject) {
         ref.observeEventType(.Value, withBlock: { snapshot in
             var s = snapshot.value as! NSDictionary
-            
+    
             var t  = self.searchBar.text;
             t = t!.stringByReplacingOccurrencesOfString(".", withString: "t", options: NSStringCompareOptions.LiteralSearch, range: nil)
             
-            print(s[t!]![t!]!!["email"]);
+            print(s[t!]!);
+            
+            var andrei = self.ref.childByAppendingPath(t);
+            
+            var user = ["tracker": s[t!]![t!]!!];
+            
+            var users = ["guest": user]
+            andrei.childByAppendingPath(t!).setValue(users)
+            
             }, withCancelBlock: { error in
                 print(error.description)
         })    }

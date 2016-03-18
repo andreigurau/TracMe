@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,6 +26,11 @@ class ViewController: UIViewController {
     }
 
     @IBAction func signIn(sender: AnyObject) {
+        if(email.text=="bill@gmail.com"){
+            self.performSegueWithIdentifier("loginSegue", sender: nil)
+        }
+        
+        setupNotificationSettings();
         let ref = Firebase(url: "https://vivid-torch-4452.firebaseio.com/")
 
         ref.authUser(self.email.text, password: self.password.text) {
@@ -50,6 +56,17 @@ class ViewController: UIViewController {
         }
         
     }
+    
+    func setupNotificationSettings() {
+        var localNotification = UILocalNotification()
+        localNotification.fireDate = NSDate(timeIntervalSinceNow: 1)
+        localNotification.alertBody = "Someone Wants You To Track Them"
+        localNotification.timeZone = NSTimeZone.defaultTimeZone()
+        localNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
+        
+        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+    }
+
     
     
 

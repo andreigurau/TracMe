@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0F5D73431C924095008592B8 /* ChooseUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5D73421C924095008592B8 /* ChooseUserViewController.swift */; };
 		0F71718A1C924F7700398BFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F7171881C924F7700398BFD /* Main.storyboard */; };
+		0F7F12591C98C364001C1CF3 /* ChooseMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7F12581C98C364001C1CF3 /* ChooseMapViewController.swift */; };
 		0FFA061C1C8F957C003B38DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFA061B1C8F957C003B38DE /* AppDelegate.swift */; };
 		0FFA061E1C8F957C003B38DE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFA061D1C8F957C003B38DE /* ViewController.swift */; };
 		0FFA06231C8F957C003B38DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FFA06221C8F957C003B38DE /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		0F5D73421C924095008592B8 /* ChooseUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseUserViewController.swift; sourceTree = "<group>"; };
 		0F7171891C924F7700398BFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0F7F12581C98C364001C1CF3 /* ChooseMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseMapViewController.swift; sourceTree = "<group>"; };
 		0FFA06181C8F957C003B38DE /* TracMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TracMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FFA061B1C8F957C003B38DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0FFA061D1C8F957C003B38DE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				0FFA061D1C8F957C003B38DE /* ViewController.swift */,
 				0FFA062E1C8F9941003B38DE /* SignUpViewController.swift */,
 				0F5D73421C924095008592B8 /* ChooseUserViewController.swift */,
+				0F7F12581C98C364001C1CF3 /* ChooseMapViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 				0F5D73431C924095008592B8 /* ChooseUserViewController.swift in Sources */,
 				0FFA062F1C8F9941003B38DE /* SignUpViewController.swift in Sources */,
 				0FFA061E1C8F957C003B38DE /* ViewController.swift in Sources */,
+				0F7F12591C98C364001C1CF3 /* ChooseMapViewController.swift in Sources */,
 				0FFA061C1C8F957C003B38DE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,6 +345,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TracMe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tutorial.TracMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -353,6 +358,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TracMe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tutorial.TracMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";

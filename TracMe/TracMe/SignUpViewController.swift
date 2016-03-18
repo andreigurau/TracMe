@@ -50,15 +50,14 @@ class SignUpViewController: UIViewController {
                     print(error);
                 } else {
                     var user = ["email": self.email.text! as String, "password": self.password.text! as String, "number": self.number.text! as String];
-                    //var gracehop = ["full_name": "Grace Hopper", "date_of_birth": "December 9, 1906"]
-                    
-                    //var usersRef = ref.childByAppendingPath("users")
+
                     
                     var t  = self.email.text;
                     t = t!.stringByReplacingOccurrencesOfString(".", withString: "t", options: NSStringCompareOptions.LiteralSearch, range: nil)
-                    //print(t)
+
                     var users = [t! as String: user]
                     ref.childByAppendingPath(t!).setValue(users)
+                    
                     self.performSegueWithIdentifier("signupSegue", sender: nil);
 
                 }
