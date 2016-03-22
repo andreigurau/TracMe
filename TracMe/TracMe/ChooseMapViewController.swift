@@ -8,9 +8,10 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
-class ChooseMapViewController: UIViewController, MKMapViewDelegate {
-
+class ChooseMapViewController: UIViewController, MKMapViewDelegate,CLLocationManagerDelegate {
+var locationManager: CLLocationManager!
     var email: String!
     @IBOutlet weak var searchText: UITextField!
     @IBOutlet weak var mapView: MKMapView!
@@ -23,6 +24,11 @@ class ChooseMapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mapView.delegate = self;
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.distanceFilter = 200
+        locationManager.requestWhenInUseAuthorization()
         // Do any additional setup after loading the view.
     }
 

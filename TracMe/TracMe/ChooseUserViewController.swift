@@ -16,6 +16,15 @@ class ChooseUserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        ref.observeAuthEventWithBlock({ authData in
+            if authData != nil {
+                // user authenticated
+                print(authData)
+            } else {
+                // No user is signed in
+            }
+        })
+        
         // Do any additional setup after loading the view.
     }
 
@@ -46,14 +55,19 @@ class ChooseUserViewController: UIViewController {
             var t  = self.searchBar.text;
             t = t!.stringByReplacingOccurrencesOfString(".", withString: "t", options: NSStringCompareOptions.LiteralSearch, range: nil)
             
-            print(s[t!]!);
+            print(s[t!]![t!]!!);
             
-            var andrei = self.ref.childByAppendingPath(t);
             
-            var user = ["tracker": s[t!]![t!]!!];
+            var hopperRef = self.ref.childByAppendingPath(t)
+            var tracker = ["tracker": s[t!]![t!]!!]
             
-            var users = ["guest": user]
-            andrei.childByAppendingPath(t!).setValue(users)
+            hopperRef.updateChildValues(tracker)
+            //var andrei = self.ref.childByAppendingPath(t);
+            
+            //var user = ["tracker": s[t!]![t!]!!];
+            
+            //var users = ["guest": user]
+            //andrei.childByAppendingPath(t!).setValue(users)
             
             }, withCancelBlock: { error in
                 print(error.description)
