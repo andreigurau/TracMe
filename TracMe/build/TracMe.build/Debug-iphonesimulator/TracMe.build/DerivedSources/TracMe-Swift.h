@@ -113,7 +113,9 @@ SWIFT_CLASS("_TtC6TracMe11AppDelegate")
 @end
 
 @class CLLocationManager;
+@class MKPointAnnotation;
 @class MKMapItem;
+@class UIStoryboardSegue;
 @class UITextField;
 @class MKMapView;
 @class NSBundle;
@@ -122,6 +124,7 @@ SWIFT_CLASS("_TtC6TracMe11AppDelegate")
 SWIFT_CLASS("_TtC6TracMe23ChooseMapViewController")
 @interface ChooseMapViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate>
 @property (nonatomic, strong) CLLocationManager * __null_unspecified locationManager;
+@property (nonatomic, copy) NSArray<MKPointAnnotation *> * __nonnull locations;
 @property (nonatomic, copy) NSString * __null_unspecified email;
 @property (nonatomic, weak) IBOutlet UITextField * __null_unspecified searchText;
 @property (nonatomic, weak) IBOutlet MKMapView * __null_unspecified mapView;
@@ -131,22 +134,25 @@ SWIFT_CLASS("_TtC6TracMe23ChooseMapViewController")
 - (void)didReceiveMemoryWarning;
 - (IBAction)textFieldReturn:(id __nonnull)sender;
 - (void)performSearch;
+- (void)prepareForSegue:(UIStoryboardSegue * __nonnull)segue sender:(id __nullable)sender;
+- (void)removeAnnotations;
 - (nonnull instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 @class Firebase;
-@class UIStoryboardSegue;
 @class UISearchBar;
 
 SWIFT_CLASS("_TtC6TracMe24ChooseUserViewController")
 @interface ChooseUserViewController : UIViewController
+@property (nonatomic, copy) NSString * __null_unspecified myEmail;
 @property (nonatomic, readonly, strong) Firebase * __null_unspecified ref;
 @property (nonatomic, weak) IBOutlet UISearchBar * __null_unspecified searchBar;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
 - (void)prepareForSegue:(UIStoryboardSegue * __nonnull)segue sender:(id __nullable)sender;
 - (IBAction)search:(id __nonnull)sender;
+- (void)appMovedToBackground;
 - (nonnull instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -177,11 +183,14 @@ SWIFT_CLASS("_TtC6TracMe20SignUpViewController")
 
 SWIFT_CLASS("_TtC6TracMe21TrackerViewController")
 @interface TrackerViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate>
+@property (nonatomic, strong) MKPointAnnotation * __nullable destination;
 @property (nonatomic, weak) IBOutlet MKMapView * __null_unspecified mapView;
 @property (nonatomic, strong) CLLocationManager * __null_unspecified locationManager;
+@property (nonatomic, copy) NSArray<CLLocation *> * __nonnull myLocations;
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
 - (void)goToLocation:(CLLocation * __nonnull)location;
+- (void)locationManager:(CLLocationManager * __nonnull)manager didUpdateLocations:(NSArray<CLLocation *> * __nonnull)locations;
 - (nonnull instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -195,6 +204,7 @@ SWIFT_CLASS("_TtC6TracMe14ViewController")
 - (void)didReceiveMemoryWarning;
 - (IBAction)signIn:(id __nonnull)sender;
 - (void)setupNotificationSettings;
+- (void)prepareForSegue:(UIStoryboardSegue * __nonnull)segue sender:(id __nullable)sender;
 - (nonnull instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end

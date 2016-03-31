@@ -12,6 +12,7 @@ import CoreLocation
 
 class ChooseMapViewController: UIViewController, MKMapViewDelegate,CLLocationManagerDelegate {
 var locationManager: CLLocationManager!
+    var locations : [MKPointAnnotation] = []
     var email: String!
     @IBOutlet weak var searchText: UITextField!
     @IBOutlet weak var mapView: MKMapView!
@@ -54,7 +55,7 @@ var locationManager: CLLocationManager!
     */
     
     func performSearch() {
-        
+        removeAnnotations()
         let request = MKLocalSearchRequest()
         request.naturalLanguageQuery = searchText.text
         request.region = mapView.region
@@ -79,11 +80,29 @@ var locationManager: CLLocationManager!
                     //print(anotation.coordinate);
                     self.mapView.addAnnotation(anotation)
                     
+                    self.locations.append(anotation)
                     
 
                 }
+                
+                
             }
         }
     }
 
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        
+        let locationToSend = locations[0]
+        print(locationToSend)
+        let trackerViewController = segue.destinationViewController as! TrackerViewController
+        trackerViewController.destination = locationToSend
+    }
+    
+    func removeAnnotations(){
+        let annotationsToRemove = mapView.annotations.filter { $0 !== mapView.userLocation }
+        mapView.removeAnnotations( annotationsToRemove )
+    }
 }

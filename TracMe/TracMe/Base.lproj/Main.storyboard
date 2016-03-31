@@ -222,6 +222,13 @@
                                     <action selector="search:" destination="zaZ-UT-CSs" eventType="touchUpInside" id="nw2-0F-RDe"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJv-A3-ITw">
+                                <rect key="frame" x="249" y="518" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="saveAnnotation:" destination="zaZ-UT-CSs" eventType="touchUpInside" id="HEG-zB-Yf0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

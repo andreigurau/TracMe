@@ -6,28 +6,30 @@ provides-nominal:
 provides-member:
 - ["C6TracMe14ViewController", ""]
 provides-dynamic-lookup:
-- "password"
-- "setupNotificationSettings"
-- "email"
-- "viewDidLoad"
-- "signIn"
 - "didReceiveMemoryWarning"
+- "setupNotificationSettings"
+- "viewDidLoad"
+- "password"
+- "signIn"
+- "prepareForSegue"
+- "email"
 depends-top-level:
-- "ViewController"
-- !private "+"
 - !private "FAuthenticationError"
 - !private "UIApplication"
-- !private "=="
-- !private "NSTimeZone"
-- !private "UILocalNotification"
-- !private "StringLiteralType"
-- "UIViewController"
-- !private "NSDate"
-- !private "!="
-- !private "Firebase"
 - "UITextField"
-- !private "print"
+- !private "!="
 - "AnyObject"
+- !private "NSTimeZone"
+- !private "StringLiteralType"
+- "UIStoryboardSegue"
+- !private "print"
+- !private "+"
+- !private "ChooseUserViewController"
+- !private "NSDate"
+- !private "UILocalNotification"
+- !private "Firebase"
+- "UIViewController"
+- "ViewController"
 depends-member:
 - !private ["PSs9AnyObject", "FAuthenticationError"]
 - !private ["PSs9AnyObject", "Firebase"]
@@ -40,12 +42,15 @@ depends-member:
 - !private ["PSs9AnyObject", "authUser"]
 - !private ["PSs9AnyObject", "code"]
 - !private ["PSs9AnyObject", "defaultTimeZone"]
+- !private ["PSs9AnyObject", "destinationViewController"]
 - ["PSs9AnyObject", "didReceiveMemoryWarning"]
 - ["PSs9AnyObject", "email"]
 - !private ["PSs9AnyObject", "fireDate"]
 - ["PSs9AnyObject", "init"]
+- !private ["PSs9AnyObject", "myEmail"]
 - ["PSs9AnyObject", "password"]
 - !private ["PSs9AnyObject", "performSegueWithIdentifier"]
+- ["PSs9AnyObject", "prepareForSegue"]
 - !private ["PSs9AnyObject", "print"]
 - !private ["PSs9AnyObject", "scheduleLocalNotification"]
 - ["PSs9AnyObject", "setupNotificationSettings"]
@@ -69,12 +74,15 @@ depends-member:
 - !private ["PSs11CVarArgType", "authUser"]
 - !private ["PSs11CVarArgType", "code"]
 - !private ["PSs11CVarArgType", "defaultTimeZone"]
+- !private ["PSs11CVarArgType", "destinationViewController"]
 - ["PSs11CVarArgType", "didReceiveMemoryWarning"]
 - ["PSs11CVarArgType", "email"]
 - !private ["PSs11CVarArgType", "fireDate"]
 - ["PSs11CVarArgType", "init"]
+- !private ["PSs11CVarArgType", "myEmail"]
 - ["PSs11CVarArgType", "password"]
 - !private ["PSs11CVarArgType", "performSegueWithIdentifier"]
+- ["PSs11CVarArgType", "prepareForSegue"]
 - !private ["PSs11CVarArgType", "print"]
 - !private ["PSs11CVarArgType", "scheduleLocalNotification"]
 - ["PSs11CVarArgType", "setupNotificationSettings"]
@@ -84,6 +92,7 @@ depends-member:
 - !private ["PSs11CVarArgType", "timeZone"]
 - ["PSs11CVarArgType", "viewDidLoad"]
 - ["PSs11CVarArgType", ""]
+- !private ["C6TracMe24ChooseUserViewController", "myEmail"]
 - !private ["PSs28CustomDebugStringConvertible", "Some"]
 - !private ["PSs23CustomStringConvertible", "FAuthenticationError"]
 - !private ["PSs23CustomStringConvertible", "Firebase"]
@@ -97,12 +106,15 @@ depends-member:
 - !private ["PSs23CustomStringConvertible", "authUser"]
 - !private ["PSs23CustomStringConvertible", "code"]
 - !private ["PSs23CustomStringConvertible", "defaultTimeZone"]
+- !private ["PSs23CustomStringConvertible", "destinationViewController"]
 - ["PSs23CustomStringConvertible", "didReceiveMemoryWarning"]
 - ["PSs23CustomStringConvertible", "email"]
 - !private ["PSs23CustomStringConvertible", "fireDate"]
 - ["PSs23CustomStringConvertible", "init"]
+- !private ["PSs23CustomStringConvertible", "myEmail"]
 - ["PSs23CustomStringConvertible", "password"]
 - !private ["PSs23CustomStringConvertible", "performSegueWithIdentifier"]
+- ["PSs23CustomStringConvertible", "prepareForSegue"]
 - !private ["PSs23CustomStringConvertible", "print"]
 - !private ["PSs23CustomStringConvertible", "scheduleLocalNotification"]
 - ["PSs23CustomStringConvertible", "setupNotificationSettings"]
@@ -127,12 +139,15 @@ depends-member:
 - !private ["PSs9Equatable", "authUser"]
 - !private ["PSs9Equatable", "code"]
 - !private ["PSs9Equatable", "defaultTimeZone"]
+- !private ["PSs9Equatable", "destinationViewController"]
 - ["PSs9Equatable", "didReceiveMemoryWarning"]
 - ["PSs9Equatable", "email"]
 - !private ["PSs9Equatable", "fireDate"]
 - ["PSs9Equatable", "init"]
+- !private ["PSs9Equatable", "myEmail"]
 - ["PSs9Equatable", "password"]
 - !private ["PSs9Equatable", "performSegueWithIdentifier"]
+- ["PSs9Equatable", "prepareForSegue"]
 - !private ["PSs9Equatable", "print"]
 - !private ["PSs9Equatable", "scheduleLocalNotification"]
 - ["PSs9Equatable", "setupNotificationSettings"]
@@ -166,12 +181,15 @@ depends-member:
 - !private ["PSs8Hashable", "authUser"]
 - !private ["PSs8Hashable", "code"]
 - !private ["PSs8Hashable", "defaultTimeZone"]
+- !private ["PSs8Hashable", "destinationViewController"]
 - ["PSs8Hashable", "didReceiveMemoryWarning"]
 - ["PSs8Hashable", "email"]
 - !private ["PSs8Hashable", "fireDate"]
 - ["PSs8Hashable", "init"]
+- !private ["PSs8Hashable", "myEmail"]
 - ["PSs8Hashable", "password"]
 - !private ["PSs8Hashable", "performSegueWithIdentifier"]
+- ["PSs8Hashable", "prepareForSegue"]
 - !private ["PSs8Hashable", "print"]
 - !private ["PSs8Hashable", "scheduleLocalNotification"]
 - ["PSs8Hashable", "setupNotificationSettings"]
@@ -196,8 +214,10 @@ depends-member:
 - ["PSo8NSCoding", "email"]
 - !private ["PSo8NSCoding", "fireDate"]
 - ["PSo8NSCoding", "init"]
+- !private ["PSo8NSCoding", "myEmail"]
 - ["PSo8NSCoding", "password"]
 - !private ["PSo8NSCoding", "performSegueWithIdentifier"]
+- ["PSo8NSCoding", "prepareForSegue"]
 - !private ["PSo8NSCoding", "print"]
 - ["PSo8NSCoding", "setupNotificationSettings"]
 - ["PSo8NSCoding", "signIn"]
@@ -224,20 +244,24 @@ depends-member:
 - ["PSo26NSExtensionRequestHandling", "didReceiveMemoryWarning"]
 - ["PSo26NSExtensionRequestHandling", "email"]
 - ["PSo26NSExtensionRequestHandling", "init"]
+- !private ["PSo26NSExtensionRequestHandling", "myEmail"]
 - ["PSo26NSExtensionRequestHandling", "password"]
 - !private ["PSo26NSExtensionRequestHandling", "performSegueWithIdentifier"]
+- ["PSo26NSExtensionRequestHandling", "prepareForSegue"]
 - !private ["PSo26NSExtensionRequestHandling", "print"]
 - ["PSo26NSExtensionRequestHandling", "setupNotificationSettings"]
 - ["PSo26NSExtensionRequestHandling", "signIn"]
 - ["PSo26NSExtensionRequestHandling", "viewDidLoad"]
 - ["PSo26NSExtensionRequestHandling", ""]
 - ["CSo8NSObject", "AnyObject"]
+- !private ["CSo8NSObject", "ChooseUserViewController"]
 - !private ["CSo8NSObject", "FAuthenticationError"]
 - !private ["CSo8NSObject", "Firebase"]
 - !private ["CSo8NSObject", "NSDate"]
 - !private ["CSo8NSObject", "NSTimeZone"]
 - !private ["CSo8NSObject", "UIApplication"]
 - !private ["CSo8NSObject", "UILocalNotification"]
+- ["CSo8NSObject", "UIStoryboardSegue"]
 - ["CSo8NSObject", "UITextField"]
 - !private ["CSo8NSObject", "alertBody"]
 - !private ["CSo8NSObject", "applicationIconBadgeNumber"]
@@ -245,12 +269,15 @@ depends-member:
 - !private ["CSo8NSObject", "code"]
 - !private ["CSo8NSObject", "defaultTimeZone"]
 - !private ["CSo8NSObject", "deinit"]
+- !private ["CSo8NSObject", "destinationViewController"]
 - ["CSo8NSObject", "didReceiveMemoryWarning"]
 - ["CSo8NSObject", "email"]
 - !private ["CSo8NSObject", "fireDate"]
 - ["CSo8NSObject", "init"]
+- !private ["CSo8NSObject", "myEmail"]
 - ["CSo8NSObject", "password"]
 - !private ["CSo8NSObject", "performSegueWithIdentifier"]
+- ["CSo8NSObject", "prepareForSegue"]
 - !private ["CSo8NSObject", "print"]
 - !private ["CSo8NSObject", "scheduleLocalNotification"]
 - ["CSo8NSObject", "setupNotificationSettings"]
@@ -270,12 +297,15 @@ depends-member:
 - !private ["PSo16NSObjectProtocol", "authUser"]
 - !private ["PSo16NSObjectProtocol", "code"]
 - !private ["PSo16NSObjectProtocol", "defaultTimeZone"]
+- !private ["PSo16NSObjectProtocol", "destinationViewController"]
 - ["PSo16NSObjectProtocol", "didReceiveMemoryWarning"]
 - ["PSo16NSObjectProtocol", "email"]
 - !private ["PSo16NSObjectProtocol", "fireDate"]
 - ["PSo16NSObjectProtocol", "init"]
+- !private ["PSo16NSObjectProtocol", "myEmail"]
 - ["PSo16NSObjectProtocol", "password"]
 - !private ["PSo16NSObjectProtocol", "performSegueWithIdentifier"]
+- ["PSo16NSObjectProtocol", "prepareForSegue"]
 - !private ["PSo16NSObjectProtocol", "print"]
 - !private ["PSo16NSObjectProtocol", "scheduleLocalNotification"]
 - ["PSo16NSObjectProtocol", "setupNotificationSettings"]
@@ -307,8 +337,10 @@ depends-member:
 - ["PSo21UIAppearanceContainer", "didReceiveMemoryWarning"]
 - ["PSo21UIAppearanceContainer", "email"]
 - ["PSo21UIAppearanceContainer", "init"]
+- !private ["PSo21UIAppearanceContainer", "myEmail"]
 - ["PSo21UIAppearanceContainer", "password"]
 - !private ["PSo21UIAppearanceContainer", "performSegueWithIdentifier"]
+- ["PSo21UIAppearanceContainer", "prepareForSegue"]
 - !private ["PSo21UIAppearanceContainer", "print"]
 - ["PSo21UIAppearanceContainer", "setupNotificationSettings"]
 - ["PSo21UIAppearanceContainer", "signIn"]
@@ -327,8 +359,10 @@ depends-member:
 - ["PSo18UIContentContainer", "didReceiveMemoryWarning"]
 - ["PSo18UIContentContainer", "email"]
 - ["PSo18UIContentContainer", "init"]
+- !private ["PSo18UIContentContainer", "myEmail"]
 - ["PSo18UIContentContainer", "password"]
 - !private ["PSo18UIContentContainer", "performSegueWithIdentifier"]
+- ["PSo18UIContentContainer", "prepareForSegue"]
 - !private ["PSo18UIContentContainer", "print"]
 - ["PSo18UIContentContainer", "setupNotificationSettings"]
 - ["PSo18UIContentContainer", "signIn"]
@@ -346,8 +380,10 @@ depends-member:
 - ["PSo18UIFocusEnvironment", "didReceiveMemoryWarning"]
 - ["PSo18UIFocusEnvironment", "email"]
 - ["PSo18UIFocusEnvironment", "init"]
+- !private ["PSo18UIFocusEnvironment", "myEmail"]
 - ["PSo18UIFocusEnvironment", "password"]
 - !private ["PSo18UIFocusEnvironment", "performSegueWithIdentifier"]
+- ["PSo18UIFocusEnvironment", "prepareForSegue"]
 - !private ["PSo18UIFocusEnvironment", "print"]
 - ["PSo18UIFocusEnvironment", "setupNotificationSettings"]
 - ["PSo18UIFocusEnvironment", "signIn"]
@@ -361,19 +397,23 @@ depends-member:
 - !private ["CSo19UILocalNotification", "init"]
 - !private ["CSo19UILocalNotification", "timeZone"]
 - ["CSo11UIResponder", "AnyObject"]
+- !private ["CSo11UIResponder", "ChooseUserViewController"]
 - !private ["CSo11UIResponder", "FAuthenticationError"]
 - !private ["CSo11UIResponder", "Firebase"]
 - !private ["CSo11UIResponder", "NSDate"]
 - !private ["CSo11UIResponder", "NSTimeZone"]
 - !private ["CSo11UIResponder", "UIApplication"]
 - !private ["CSo11UIResponder", "UILocalNotification"]
+- ["CSo11UIResponder", "UIStoryboardSegue"]
 - ["CSo11UIResponder", "UITextField"]
 - !private ["CSo11UIResponder", "applicationIconBadgeNumber"]
 - ["CSo11UIResponder", "didReceiveMemoryWarning"]
 - ["CSo11UIResponder", "email"]
 - ["CSo11UIResponder", "init"]
+- !private ["CSo11UIResponder", "myEmail"]
 - ["CSo11UIResponder", "password"]
 - !private ["CSo11UIResponder", "performSegueWithIdentifier"]
+- ["CSo11UIResponder", "prepareForSegue"]
 - !private ["CSo11UIResponder", "print"]
 - !private ["CSo11UIResponder", "scheduleLocalNotification"]
 - ["CSo11UIResponder", "setupNotificationSettings"]
@@ -390,13 +430,16 @@ depends-member:
 - ["PSo16UIStateRestoring", "didReceiveMemoryWarning"]
 - ["PSo16UIStateRestoring", "email"]
 - ["PSo16UIStateRestoring", "init"]
+- !private ["PSo16UIStateRestoring", "myEmail"]
 - ["PSo16UIStateRestoring", "password"]
 - !private ["PSo16UIStateRestoring", "performSegueWithIdentifier"]
+- ["PSo16UIStateRestoring", "prepareForSegue"]
 - !private ["PSo16UIStateRestoring", "print"]
 - ["PSo16UIStateRestoring", "setupNotificationSettings"]
 - ["PSo16UIStateRestoring", "signIn"]
 - ["PSo16UIStateRestoring", "viewDidLoad"]
 - ["PSo16UIStateRestoring", ""]
+- !private ["CSo17UIStoryboardSegue", "destinationViewController"]
 - !private ["CSo11UITextField", "text"]
 - !private ["PSo11UITextInput", "text"]
 - !private ["PSo17UITextInputTraits", "text"]
@@ -409,8 +452,10 @@ depends-member:
 - ["PSo18UITraitEnvironment", "didReceiveMemoryWarning"]
 - ["PSo18UITraitEnvironment", "email"]
 - ["PSo18UITraitEnvironment", "init"]
+- !private ["PSo18UITraitEnvironment", "myEmail"]
 - ["PSo18UITraitEnvironment", "password"]
 - !private ["PSo18UITraitEnvironment", "performSegueWithIdentifier"]
+- ["PSo18UITraitEnvironment", "prepareForSegue"]
 - !private ["PSo18UITraitEnvironment", "print"]
 - ["PSo18UITraitEnvironment", "setupNotificationSettings"]
 - ["PSo18UITraitEnvironment", "signIn"]
@@ -419,30 +464,37 @@ depends-member:
 - ["PSo18UITraitEnvironment", ""]
 - !private ["CSo6UIView", "text"]
 - ["CSo16UIViewController", "AnyObject"]
+- !private ["CSo16UIViewController", "ChooseUserViewController"]
 - !private ["CSo16UIViewController", "FAuthenticationError"]
 - !private ["CSo16UIViewController", "Firebase"]
 - !private ["CSo16UIViewController", "NSDate"]
 - !private ["CSo16UIViewController", "NSTimeZone"]
 - !private ["CSo16UIViewController", "UIApplication"]
 - !private ["CSo16UIViewController", "UILocalNotification"]
+- ["CSo16UIViewController", "UIStoryboardSegue"]
 - ["CSo16UIViewController", "UITextField"]
+- !private ["CSo16UIViewController", "deinit"]
 - ["CSo16UIViewController", "didReceiveMemoryWarning"]
 - ["CSo16UIViewController", "email"]
 - ["CSo16UIViewController", "init"]
+- !private ["CSo16UIViewController", "myEmail"]
 - ["CSo16UIViewController", "password"]
 - !private ["CSo16UIViewController", "performSegueWithIdentifier"]
+- ["CSo16UIViewController", "prepareForSegue"]
 - !private ["CSo16UIViewController", "print"]
 - ["CSo16UIViewController", "setupNotificationSettings"]
 - ["CSo16UIViewController", "signIn"]
 - ["CSo16UIViewController", "viewDidLoad"]
 - ["CSo16UIViewController", ""]
 - ["C6TracMe14ViewController", "AnyObject"]
+- !private ["C6TracMe14ViewController", "ChooseUserViewController"]
 - !private ["C6TracMe14ViewController", "FAuthenticationError"]
 - !private ["C6TracMe14ViewController", "Firebase"]
 - !private ["C6TracMe14ViewController", "NSDate"]
 - !private ["C6TracMe14ViewController", "NSTimeZone"]
 - !private ["C6TracMe14ViewController", "UIApplication"]
 - !private ["C6TracMe14ViewController", "UILocalNotification"]
+- ["C6TracMe14ViewController", "UIStoryboardSegue"]
 - ["C6TracMe14ViewController", "UITextField"]
 - ["C6TracMe14ViewController", "deinit"]
 - ["C6TracMe14ViewController", "didReceiveMemoryWarning"]
@@ -450,6 +502,7 @@ depends-member:
 - ["C6TracMe14ViewController", "init"]
 - ["C6TracMe14ViewController", "password"]
 - !private ["C6TracMe14ViewController", "performSegueWithIdentifier"]
+- ["C6TracMe14ViewController", "prepareForSegue"]
 - !private ["C6TracMe14ViewController", "print"]
 - ["C6TracMe14ViewController", "setupNotificationSettings"]
 - ["C6TracMe14ViewController", "signIn"]
@@ -467,6 +520,7 @@ depends-nominal:
 - !private "PSs25BooleanLiteralConvertible"
 - !private "PSs11BooleanType"
 - "PSs11CVarArgType"
+- !private "C6TracMe24ChooseUserViewController"
 - !private "PSs28CustomDebugStringConvertible"
 - "PSs23CustomStringConvertible"
 - "PSs9Equatable"
@@ -501,6 +555,7 @@ depends-nominal:
 - !private "CSo19UILocalNotification"
 - "CSo11UIResponder"
 - "PSo16UIStateRestoring"
+- !private "CSo17UIStoryboardSegue"
 - !private "CSo11UITextField"
 - !private "PSo11UITextInput"
 - !private "PSo17UITextInputTraits"
@@ -536,4 +591,4 @@ depends-external:
 - "/Users/andreigurau/Desktop/TracMe/TracMe/build/Debug-iphonesimulator/Firebase.framework/Headers/FAuthData.h"
 - "/Users/andreigurau/Desktop/TracMe/TracMe/build/Debug-iphonesimulator/Firebase.framework/Headers/Firebase-umbrella.h"
 - "/Users/andreigurau/Desktop/TracMe/TracMe/build/Debug-iphonesimulator/Firebase.framework/Modules/module.modulemap"
-interface-hash: "c502e0de15d62c86d0b0e0745e8990fd"
+interface-hash: "32ab44d10016b253d8d1c0450007f1f5"

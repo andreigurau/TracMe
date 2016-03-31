@@ -26,9 +26,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func signIn(sender: AnyObject) {
-        if(email.text=="bill@gmail.com"){
-            self.performSegueWithIdentifier("loginSegue", sender: nil)
-        }
+        
         
         setupNotificationSettings();
         let ref = Firebase(url: "https://vivid-torch-4452.firebaseio.com/")
@@ -68,7 +66,15 @@ class ViewController: UIViewController {
     }
 
     
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        
+        let toSendEmail = self.email.text
+        
+        let chooseUserViewController = segue.destinationViewController as! ChooseUserViewController
+        chooseUserViewController.myEmail = toSendEmail
+    }
 
 }
 

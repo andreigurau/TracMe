@@ -11,11 +11,16 @@ import Firebase
 
 class ChooseUserViewController: UIViewController {
 
+    var myEmail :String!
     let ref = Firebase(url: "https://vivid-torch-4452.firebaseio.com/")
     @IBOutlet weak var searchBar: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let notificationCenter = NSNotificationCenter.defaultCenter();
+        notificationCenter.addObserver(self, selector: "appMovedToBackground", name: UIApplicationWillResignActiveNotification, object: nil);
 
+        print(myEmail)
         ref.observeAuthEventWithBlock({ authData in
             if authData != nil {
                 // user authenticated
@@ -55,13 +60,19 @@ class ChooseUserViewController: UIViewController {
             var t  = self.searchBar.text;
             t = t!.stringByReplacingOccurrencesOfString(".", withString: "t", options: NSStringCompareOptions.LiteralSearch, range: nil)
             
-            print(s[t!]![t!]!!);
+            var newEmail = self.myEmail!.stringByReplacingOccurrencesOfString(".", withString: "t", options: NSStringCompareOptions.LiteralSearch, range: nil)
             
+            //print(s[t!]![t!]!!);
+            print(s[newEmail]![newEmail]!!)
             
             var hopperRef = self.ref.childByAppendingPath(t)
-            var tracker = ["tracker": s[t!]![t!]!!]
+            var tracker = ["tracker": s[newEmail]![newEmail]!!]
             
             hopperRef.updateChildValues(tracker)
+            
+            var trackerRef = self.ref.childByAppendingPath(newEmail)
+            var tracking = ["tracking":s[t!]![t!]!!]
+            trackerRef.updateChildValues(tracking)
             //var andrei = self.ref.childByAppendingPath(t);
             
             //var user = ["tracker": s[t!]![t!]!!];
@@ -72,5 +83,14 @@ class ChooseUserViewController: UIViewController {
             }, withCancelBlock: { error in
                 print(error.description)
         })    }
+    
+    func appMovedToBackground() {
+        myEmail = myEmail.stringByReplacingOccurrencesOfString(".", withString: "t", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        var r = Firebase(url: "https://vivid-torch-4452.firebaseio.com/"+myEmail);
+        
+        r.observeEventType(.ChildAdded, withBlock: { snapshot in
+            
+        })
+    }
     
 }
