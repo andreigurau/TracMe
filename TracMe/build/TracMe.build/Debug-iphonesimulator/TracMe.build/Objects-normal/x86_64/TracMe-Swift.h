@@ -186,6 +186,7 @@ SWIFT_CLASS("_TtC6TracMe20SignUpViewController")
 
 SWIFT_CLASS("_TtC6TracMe25TrackFriendViewController")
 @interface TrackFriendViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate>
+@property (nonatomic, copy) NSString * __null_unspecified e;
 @property (nonatomic, copy) NSString * __null_unspecified myEmail;
 @property (nonatomic, copy) NSString * __null_unspecified trackingEmail;
 @property (nonatomic, weak) IBOutlet MKMapView * __null_unspecified mapView;
@@ -194,7 +195,8 @@ SWIFT_CLASS("_TtC6TracMe25TrackFriendViewController")
 - (void)viewDidLoad;
 - (void)didReceiveMemoryWarning;
 - (void)goToLocation:(CLLocation * __nonnull)location;
-- (void)locationManager:(CLLocationManager * __nonnull)manager didUpdateLocations:(NSArray<CLLocation *> * __nonnull)locations;
+- (void)locs;
+- (void)removeAnnotations;
 - (nonnull instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * __nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end

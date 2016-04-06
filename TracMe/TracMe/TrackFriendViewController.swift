@@ -31,6 +31,9 @@ class TrackFriendViewController: UIViewController,MKMapViewDelegate, CLLocationM
         
         carlos.observeEventType(.Value, withBlock: { snapshot in
             self.e = snapshot.value as! String;
+            print(snapshot.value)
+            print(self.e)
+            self.locs()
             }, withCancelBlock: { error in
                 print(error.description)
         })
@@ -51,7 +54,7 @@ class TrackFriendViewController: UIViewController,MKMapViewDelegate, CLLocationM
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
         
-        
+        //locs()
         //destination.coordinate =
         //destination.title = item.name!;
         //print(anotation.coordinate);
@@ -69,29 +72,74 @@ class TrackFriendViewController: UIViewController,MKMapViewDelegate, CLLocationM
         let region = MKCoordinateRegionMake(location.coordinate, span)
         mapView.setRegion(region, animated: false)
     }
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
+    func locs(){
         //print(locations[0])
     
         e = e!.stringByReplacingOccurrencesOfString(".", withString: "t", options: NSStringCompareOptions.LiteralSearch, range: nil);
         var ref = Firebase(url: "https://vivid-torch-4452.firebaseio.com/"+e+"/coordinate")
         
-        myLocations.append(locations[0] as CLLocation)
+        var long: Double = 0.0;
+        var lat: Double = 0.0;
+        
+        ref.observeEventType(.Value, withBlock: { snapshot in
+            
+            var d = snapshot.value as! NSDictionary
+            lat = d["latitude"] as! Double
+            long = d["longitude"] as! Double
+            var x = CLLocationCoordinate2D(latitude: lat, longitude: long)
+            self.removeAnnotations()
+            var newAnotation = MKPointAnnotation()
+            newAnotation.coordinate = x
+            print(newAnotation.coordinate)
+            newAnotation.title = ""
+            
+            self.mapView.addAnnotation(newAnotation)
+            }, withCancelBlock: { error in
+                print(error.description)
+            })
+        //print(lat)
+        //var x = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        //myLocations.append(x)
         
         let spanX = 0.007
         let spanY = 0.007
         var newRegion = MKCoordinateRegion(center: mapView.userLocation.coordinate, span: MKCoordinateSpanMake(spanX, spanY))
         mapView.setRegion(newRegion, animated: true)
         
+        
+        /*var newAnotation = MKPointAnnotation()
+        newAnotation.coordinate = x
+        print(newAnotation.coordinate)
+        newAnotation.title = ""
+        
+        mapView.addAnnotation(newAnotation)*/
+        
+        
         if (myLocations.count > 1){
             var sourceIndex = myLocations.count - 1
             var destinationIndex = myLocations.count - 2
             
-            let c1 = myLocations[sourceIndex].coordinate
+            
+            
+            
+            /*let c1 = myLocations[sourceIndex].coordinate
             let c2 = myLocations[destinationIndex].coordinate
             var a = [c1, c2]
-            var polyline = MKPolyline(coordinates: &a, count: a.count)
-            mapView.addOverlay(polyline)
+            var geodesic = MKGeodesicPolyline(coordinates: &a[0], count: 2)
+            self.mapView.addOverlay(geodesic);
+            
+            UIView.animateWithDuration(1.5, animations: { () -> Void in
+                let span = MKCoordinateSpanMake(0.01, 0.01)
+                let region1 = MKCoordinateRegion(center: c1, span: span)
+                self.mapView.setRegion(region1, animated: true);
+            })*/
         }
+    }
+    
+    
+    func removeAnnotations(){
+        let annotationsToRemove = mapView.annotations.filter { $0 !== mapView.userLocation }
+        mapView.removeAnnotations( annotationsToRemove )
     }
     
 }
