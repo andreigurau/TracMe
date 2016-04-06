@@ -1,8 +1,8 @@
 //
-//  TrackerViewController.swift
+//  TrackFriendViewController.swift
 //  TracMe
 //
-//  Created by Andrei Gurau on 3/19/16.
+//  Created by Andrei Gurau on 4/5/16.
 //  Copyright © 2016 Archit Rathi. All rights reserved.
 //
 
@@ -11,21 +11,31 @@ import Firebase
 import MapKit
 import CoreLocation
 
-class TrackerViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
-    var destination: MKPointAnnotation?
+class TrackFriendViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDelegate {
+
+    var e: String!;
+    var myEmail: String!
+    var trackingEmail: String!
     @IBOutlet weak var mapView: MKMapView!
     var locationManager: CLLocationManager!
     var myLocations: [CLLocation] = []
-    var myEmail: String!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         //let centerLocation = CLLocation(latitude: 37.7833, longitude: -122.4167)
         //goToLocation(centerLocation)
-        print(destination)
+        //print(destination)
         
-       
+        var carlos = Firebase(url: "https://vivid-torch-4452.firebaseio.com/"+myEmail+"/tracker/email");
+        
+        carlos.observeEventType(.Value, withBlock: { snapshot in
+            self.e = snapshot.value as! String;
+            }, withCancelBlock: { error in
+                print(error.description)
+        })
+        
+        
         
         
         //Setup our Map View
@@ -45,7 +55,7 @@ class TrackerViewController: UIViewController, MKMapViewDelegate, CLLocationMana
         //destination.coordinate =
         //destination.title = item.name!;
         //print(anotation.coordinate);
-        self.mapView.addAnnotation(destination!)
+        //self.mapView.addAnnotation(destination!)
         
     }
     
@@ -61,17 +71,9 @@ class TrackerViewController: UIViewController, MKMapViewDelegate, CLLocationMana
     }
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
         //print(locations[0])
-        print(locations[0].coordinate.latitude)
-        print(locations[0].coordinate.longitude)
-        
-        myEmail = myEmail!.stringByReplacingOccurrencesOfString(".", withString: "t", options: NSStringCompareOptions.LiteralSearch, range: nil)
-        var refrence = Firebase(url: "https://vivid-torch-4452.firebaseio.com/"+myEmail);
-        
-        var coord = ["latitude": locations[0].coordinate.latitude, "longitude": locations[0].coordinate.longitude];
-        var tracker = ["coordinate": coord]
-        
-        refrence.updateChildValues(tracker)
-        
+    
+        e = e!.stringByReplacingOccurrencesOfString(".", withString: "t", options: NSStringCompareOptions.LiteralSearch, range: nil);
+        var ref = Firebase(url: "https://vivid-torch-4452.firebaseio.com/"+e+"/coordinate")
         
         myLocations.append(locations[0] as CLLocation)
         
@@ -91,5 +93,5 @@ class TrackerViewController: UIViewController, MKMapViewDelegate, CLLocationMana
             mapView.addOverlay(polyline)
         }
     }
-
+    
 }

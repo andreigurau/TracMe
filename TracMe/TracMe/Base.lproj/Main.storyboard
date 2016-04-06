@@ -173,17 +173,60 @@
                                     <segue destination="zaZ-UT-CSs" kind="presentation" id="30Y-ky-SCX"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3M-Zd-NjA">
+                                <rect key="frame" x="123" y="258" width="75" height="30"/>
+                                <state key="normal" title="Track User"/>
+                                <connections>
+                                    <action selector="trackUserButton:" destination="cZH-06-PSF" eventType="touchUpInside" id="6O3-eO-Zrc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="searchBar" destination="7xd-FT-dO6" id="B0n-pz-GDs"/>
+                        <segue destination="Zpg-1O-PGb" kind="presentation" identifier="trackFriendSegue" id="BCB-mI-Fsu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k4s-qp-L7D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1033" y="393"/>
+        </scene>
+        <!--Track Friend View Controller-->
+        <scene sceneID="IAK-ax-237">
+            <objects>
+                <viewController id="Zpg-1O-PGb" customClass="TrackFriendViewController" customModule="TracMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1JK-nH-aAW"/>
+                        <viewControllerLayoutGuide type="bottom" id="ubc-R4-T81"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LRC-c0-vRd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RFp-La-rfe">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="463"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3C-bI-cbk">
+                                <rect key="frame" x="53" y="496" width="44" height="30"/>
+                                <state key="normal" title="Friend"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nfi-A9-yrA">
+                                <rect key="frame" x="235" y="496" width="30" height="30"/>
+                                <state key="normal" title="911"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="mapView" destination="RFp-La-rfe" id="wCT-bj-ifE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IiV-cF-mpK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1129" y="1128"/>
         </scene>
         <!--Choose Map View Controller-->
         <scene sceneID="CRQ-5t-S15">

@@ -17,6 +17,7 @@
 		0FFA062F1C8F9941003B38DE /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFA062E1C8F9941003B38DE /* SignUpViewController.swift */; };
 		152E60051C9DE65C00DB6D3C /* TrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152E60041C9DE65C00DB6D3C /* TrackerViewController.swift */; };
 		152E60071CA1FEF800DB6D3C /* MyAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152E60061CA1FEF800DB6D3C /* MyAnnotation.swift */; };
+		155425B81CB470B300DC512B /* TrackFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155425B71CB470B300DC512B /* TrackFriendViewController.swift */; };
 		EF86F737563179F6B7091B14 /* Pods_TracMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDAD3C8B1940753B5CD81373 /* Pods_TracMe.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		0FFA062E1C8F9941003B38DE /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		152E60041C9DE65C00DB6D3C /* TrackerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerViewController.swift; sourceTree = "<group>"; };
 		152E60061CA1FEF800DB6D3C /* MyAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAnnotation.swift; sourceTree = "<group>"; };
+		155425B71CB470B300DC512B /* TrackFriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackFriendViewController.swift; sourceTree = "<group>"; };
 		23FFE602C4EB07B63F607487 /* Pods-TracMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TracMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TracMe/Pods-TracMe.debug.xcconfig"; sourceTree = "<group>"; };
 		BDAD3C8B1940753B5CD81373 /* Pods_TracMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TracMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9D65397BC144B4684F3E978 /* Pods-TracMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TracMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-TracMe/Pods-TracMe.release.xcconfig"; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				0F5D73421C924095008592B8 /* ChooseUserViewController.swift */,
 				0F7F12581C98C364001C1CF3 /* ChooseMapViewController.swift */,
 				152E60041C9DE65C00DB6D3C /* TrackerViewController.swift */,
+				155425B71CB470B300DC512B /* TrackFriendViewController.swift */,
 				152E60061CA1FEF800DB6D3C /* MyAnnotation.swift */,
 			);
 			name = "View Controllers";
@@ -240,6 +243,7 @@
 				0FFA061E1C8F957C003B38DE /* ViewController.swift in Sources */,
 				152E60051C9DE65C00DB6D3C /* TrackerViewController.swift in Sources */,
 				0F7F12591C98C364001C1CF3 /* ChooseMapViewController.swift in Sources */,
+				155425B81CB470B300DC512B /* TrackFriendViewController.swift in Sources */,
 				0FFA061C1C8F957C003B38DE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

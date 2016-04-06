@@ -13,7 +13,7 @@ import CoreLocation
 class ChooseMapViewController: UIViewController, MKMapViewDelegate,CLLocationManagerDelegate {
 var locationManager: CLLocationManager!
     var locations : [MKPointAnnotation] = []
-    var email: String!
+    var myEmail: String!
     @IBOutlet weak var searchText: UITextField!
     @IBOutlet weak var mapView: MKMapView!
     var matchingItems: [MKMapItem] = [MKMapItem]()
@@ -99,6 +99,7 @@ var locationManager: CLLocationManager!
         print(locationToSend)
         let trackerViewController = segue.destinationViewController as! TrackerViewController
         trackerViewController.destination = locationToSend
+        trackerViewController.myEmail = myEmail
     }
     
     func removeAnnotations(){

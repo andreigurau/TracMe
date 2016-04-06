@@ -10,8 +10,11 @@ import UIKit
 import Firebase
 
 class ChooseUserViewController: UIViewController {
-
+    
+    
+    var scared = true;
     var myEmail :String!
+    var trackingEmail: String?
     let ref = Firebase(url: "https://vivid-torch-4452.firebaseio.com/")
     @IBOutlet weak var searchBar: UISearchBar!
     override func viewDidLoad() {
@@ -44,12 +47,20 @@ class ChooseUserViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         
-        let toSend = "dfasdf"
-        let chooseMapViewController = segue.destinationViewController as! ChooseMapViewController
-        chooseMapViewController.email = toSend
+        if(scared){
+            
+            let chooseMap = segue.destinationViewController as! ChooseMapViewController
+            chooseMap.myEmail = myEmail
+        }
+        else{
+            let track = segue.destinationViewController as! TrackFriendViewController
+            track.myEmail = myEmail
+            track.trackingEmail = trackingEmail
+        }
+       
+        
+        
     }
     
 
@@ -58,6 +69,7 @@ class ChooseUserViewController: UIViewController {
             var s = snapshot.value as! NSDictionary
     
             var t  = self.searchBar.text;
+            self.trackingEmail = t
             t = t!.stringByReplacingOccurrencesOfString(".", withString: "t", options: NSStringCompareOptions.LiteralSearch, range: nil)
             
             var newEmail = self.myEmail!.stringByReplacingOccurrencesOfString(".", withString: "t", options: NSStringCompareOptions.LiteralSearch, range: nil)
@@ -91,6 +103,24 @@ class ChooseUserViewController: UIViewController {
         r.observeEventType(.ChildAdded, withBlock: { snapshot in
             
         })
+    }
+    @IBAction func trackUserButton(sender: AnyObject) {
+        myEmail = myEmail!.stringByReplacingOccurrencesOfString(".", withString: "t", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        var carlos =  Firebase(url: "https://vivid-torch-4452.firebaseio.com/"+myEmail+"/tracker")
+        
+        var exists = false;
+        carlos.observeEventType(.Value, withBlock: { snap in
+            if snap.value is NSNull {
+                print("not there");
+                exists = true;
+            }
+            
+        })
+        
+        if(!exists){
+            scared = false;
+            self.performSegueWithIdentifier("trackFriendSegue", sender: nil)
+        }
     }
     
 }
