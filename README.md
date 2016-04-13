@@ -21,3 +21,6 @@
 [] Allows both users to call each other or 911
 
 </pre>
+
+
+![alt tag](https://github.com/andreiyugurau/TracMe/blob/master/TracMe.gif)
